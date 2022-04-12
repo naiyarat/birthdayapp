@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{%  block body %}
+    {% if plus != 0 %}
+        {% for i in List %}
+            <div class="card" style="width: 50 rem;">
+                <div class="card-body">
+                    <p class="card-title fs-5"><strong>{{ i['name'] }}</strong> - {{ i['month'] }} {{ i['day'] }}, {{ i['year'] }}</p>
+                    <p class="card-text">{{ i['message'] }}</p>
+                    <p class="card-text">Coming up in {{ i['elapsed_time'] }} day(s)
+                    <input class="btn btn-success mx-2" type="submit" style="float: right;" value="Edit" onclick="document.location='/edit/{{ i['id'] }}'">
+                    <input class="btn btn-danger" type="submit" style="float: right;" value="Delete" onclick="document.location='/delete/{{ i['id'] }}'">
+                    </p>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <br><br>
+        <p style="color:gray" class="fs-2 text-center">Currently, you have no reminders.</p>
+    {% endif %}
+{% endblock %}
